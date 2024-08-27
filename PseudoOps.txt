@@ -232,7 +232,7 @@ mul $t1,$t2,100000	lui $1, VHL3	ori $1, $1, VL3U	mul RG1, RG2, $1	#MULtiplicatio
 mulu $t1,$t2,$t3	multu RG2, RG3	mflo RG1	#MULtiplication Unsigned : Set HI to high-order 32 bits, LO and $t1 to low-order 32 bits of ($t2 multiplied by $t3, unsigned multiplication)
 mulu $t1,$t2,-100	addi $1, $0, VL3	multu RG2, $1	mflo RG1	#MULtiplication Unsigned :  Set HI to high-order 32 bits, LO and $t1 to low-order 32 bits of ($t2 multiplied by 16-bit immediate, unsigned multiplication)
 mulu $t1,$t2,100000	lui $1, VHL3	ori $1, $1, VL3U	multu RG2, $1	mflo RG1	#MULtiplication Unsigned :  Set HI to high-order 32 bits, LO and $t1 to low-order 32 bits of ($t2 multiplied by 32-bit immediate, unsigned multiplication)
-mulo $t1,$t2,$t3	mult RG2, RG3	mfhi $1	mflo RG1	sra RG1, RG1, 31 	tne $1, RG1	mflo RG1	#MULtiplication with Overflow : Set $t1 to low-order 32 bits of the product of $t2 and $t3
+mulo $t1,$t2,$t3	mult RG2, RG3	mfhi $1	mflo RG1	sra RG1, RG1, 31	tne $1, RG1	mflo RG1	#MULtiplication with Overflow : Set $t1 to low-order 32 bits of the product of $t2 and $t3
 mulo $t1,$t2,-100	addi $1, $0, VL3	mult RG2, $1	mfhi $1	mflo RG1	sra RG1, RG1, 31	tne $1, RG1	mflo RG1	#MULtiplication with Overflow : Set $t1 to low-order 32 bits of the product of $t2 and signed 16-bit immediate
 mulo $t1,$t2,100000	lui $1, VHL3	ori $1, $1, VL3U	mult RG2, $1	mfhi $1	mflo RG1	sra RG1, RG1, 31	tne $1, RG1	mflo RG1	#MULtiplication with Overflow : Set $t1 to low-order 32 bits of the product of $t2 and 32-bit immediate
 mulou $t1,$t2,$t3	multu RG2, RG3	mfhi $1	tne $1,$0	mflo RG1	#MULtiplication with Overflow Unsigned : Set $t1 to low-order 32 bits of the product of $t2 and $t3
