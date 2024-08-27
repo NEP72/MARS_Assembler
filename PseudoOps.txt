@@ -262,8 +262,16 @@ li $t1,-100	addiu RG1, $0, VL2	#Load Immediate : Set $t1 to 16-bit immediate (si
 li $t1,100	ori RG1, $0, VL2U	#Load Immediate : Set $t1 to unsigned 16-bit immediate (zero-extended)
 li $t1,100000	lui $1, VHL2	ori RG1, $1, VL2U	#Load Immediate : Set $t1 to 32-bit immediate
 
+la $t1,($t2)	addi RG1, RG3, 0	#Load Address : Set $t1 to contents of $t2
+la $t1,-100	addiu RG1, $0, VL2	#Load Address : Set $t1 to 16-bit immediate (sign-extended)
+la $t1,100	ori RG1, $0, VL2U	#Load Address : Set $t1 to 16-bit immediate (zero-extended)
+la $t1,100000	lui $1, VHL2	ori RG1, $1, VL2U	#Load Address : Set $t1 to 32-bit immediate
+la $t1,100($t2)	ori $1, $0, VL2U	add RG1, RG4, $1	#Load Address : Set $t1 to sum (of $t2 and 16-bit immediate)
+la $t1,100000($t2)	lui $1, VHL2	ori $1, $1, VL2U	add RG1, RG4, $1	#Load Address : Set $t1 to sum (of $t2 and 32-bit immediate)
 la $t1,label	lui $1, LHL	ori RG1, $1, LL2U	COMPACT	addi RG1, $0, LL2	#Load Address : Set $t1 to label's address
+la $t1,label($t2)	lui $1, LHL	ori $1, $1, LL2U	add RG1, RG4, $1	COMPACT	addi RG1, RG4, LL2	#Load Address : Set $t1 to sum (of $t2 and label's address)
 la $t1,label+100000	lui $1, LHPN	ori RG1, $1, LLPU	#Load Address : Set $t1 to sum (of label's address and 32-bit immediate)
+la $t1,label+100000($t2)	lui $1, LHPN	ori $1, $1, LLPU	add RG1, RG6, $1	#Load Address : Set $t1 to sum (of label's address, 32-bit immediate, and $t2)
 
 lw $t1,($t2)	lw RG1,0(RG3)	#Load Word : Set $t1 to contents of effective memory word address
 lw $t1,-100	lw RG1, VL2($0)	#Load Word : Set $t1 to contents of effective memory word address
